@@ -10,6 +10,8 @@
 
         <?php
 
+        $cache = date("s");
+
         $r = random_int(0,255);
         $g = random_int(0,255);
         $b = random_int(0,255);

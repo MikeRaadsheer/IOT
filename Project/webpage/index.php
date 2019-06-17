@@ -21,23 +21,25 @@
                 <div class="value">
                     <p id="G"></p>
                 </div>
-
+                
                 <div class="value">
                     <p id="B"></p>
                 </div>
-
+                
+            </div>
         </div>
-    </div>
-<script>
-let colorVals = document.getElementById('colorVals');
-let bod = document.body;
-
-let rDisplay = document.getElementById('R');
-let gDisplay = document.getElementById('G');
-let bDisplay = document.getElementById('B');
-let scoreDisplay = document.getElementById('score');
-let r,g,b,colR,colG,colB,score,oldR,oldG,oldB,oldColR,oldColG,oldColB,colorArray,rgbArray,colorString,rgbString;
-let initialized = false;
+        <script>
+            let colorVals = document.getElementById('colorVals');
+            let bod = document.body;
+            
+            let rDisplay = document.getElementById('R');
+            let gDisplay = document.getElementById('G');
+            let bDisplay = document.getElementById('B');
+            let scoreDisplay = document.getElementById('score');
+            let r,g,b,colR,colG,colB,score,oldR,oldG,oldB,oldColR,oldColG,oldColB,colorArray,rgbArray,colorString,rgbString;
+            let initialized = false;
+            
+            let reqCount = 0;
 
 function Setup(){
     
@@ -101,10 +103,9 @@ function Run(){
         }
     }
 }
-
 function SetValues(){
-
-
+    
+    
 
     ajaxVars("colorVals.json");
     if (colorString != null) 
@@ -184,8 +185,8 @@ function ajaxVars(path){
             }
         }
     };
-    
-    xhttp.open("GET", path, true);
+    reqCount++;
+    xhttp.open("GET", path + "?cache=" + reqCount, true);
     xhttp.send();
    
 }
