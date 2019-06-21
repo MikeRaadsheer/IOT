@@ -70,7 +70,7 @@ function Setup(){
 
     setInterval(() => {
         Run();
-    }, 1000);
+    }, 1000/30);
 
 }
 
@@ -103,10 +103,9 @@ function Run(){
         }
     }
 }
-function SetValues(){
-    
-    
 
+
+function SetValues(){
     ajaxVars("colorVals.json");
     if (colorString != null) 
         colorArray = JSON.parse(colorString);
@@ -132,9 +131,9 @@ function SetValues(){
         clearInterval(init);
     }
     
-    rDisplay.innerHTML = r;
-    gDisplay.innerHTML = g;
-    bDisplay.innerHTML = b;
+    rDisplay.innerHTML = Math.floor(r);
+    gDisplay.innerHTML = Math.floor(g);
+    bDisplay.innerHTML = Math.floor(b);
 }
 
 
@@ -166,7 +165,7 @@ function CalcScore(){
     sg = 255 - sg;
     sb = 255 - sb;
     
-    score = sr+sg+sb + " / " + (255 * 3);
+    score = Math.floor(sr+sg+sb) + " / " + (255 * 3);
     
     scoreDisplay.style.setProperty('color', "rgb(" + (255 - colR) + "," + (255 - colG) + "," + (255 - colB) + ")");
 }
